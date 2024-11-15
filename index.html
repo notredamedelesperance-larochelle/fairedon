@@ -71,6 +71,36 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Styles pour les boutons de langue */
+        .lang-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .lang-buttons button {
+            background-color: #800020;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        .lang-buttons button:hover {
+            background-color: #E64C2A;
+        }
+
+        /* Cacher les sections selon la langue */
+        .lang-fr, .lang-en {
+            display: none;
+        }
+
+        .lang-fr.active, .lang-en.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -80,10 +110,24 @@
     </header>
 
     <div class="content">
-        <p>
-            L'Eglise Notre Dame de l'Espérance (La Rochelle) de la fraternité sacerdotale Saint Pie X a besoin de votre aide !
-            Vous pouvez contribuer à sa rénovation et soutenir notre mission en remplissant le formulaire ci-dessous et en procédant au paiement sécurisé.
-        </p>
+        <div class="lang-buttons">
+            <button onclick="changeLanguage('fr')">Français</button>
+            <button onclick="changeLanguage('en')">English</button>
+        </div>
+
+        <div class="lang-fr active">
+            <p>
+                L'Eglise Notre Dame de l'Espérance (La Rochelle) de la fraternité sacerdotale Saint Pie X a besoin de votre aide !
+                Vous pouvez contribuer à sa rénovation et soutenir notre mission en remplissant le formulaire ci-dessous et en procédant au paiement sécurisé.
+            </p>
+        </div>
+
+        <div class="lang-en">
+            <p>
+                The Church of Notre Dame de l'Espérance (La Rochelle) of the Society of Saint Pius X needs your help!
+                You can contribute to its renovation and support our mission by filling out the form below and completing the secure payment.
+            </p>
+        </div>
 
         <div class="images">
             <img src="rochelle1.jpg" alt="Vue de La Rochelle 1">
@@ -102,6 +146,23 @@
         &copy; 2024 Notre Dame de l'Espérance - La Rochelle |
         <a href="https://laportelatine.org/lieux/les-fournils/la-rochelle">Chapelle Notre Dame de l'Espérance</a>
     </footer>
+
+    <script>
+        // Fonction pour changer la langue affichée
+        function changeLanguage(lang) {
+            // Cacher toutes les sections
+            document.querySelectorAll('.lang-fr, .lang-en').forEach(function(section) {
+                section.classList.remove('active');
+            });
+
+            // Afficher la section correspondant à la langue sélectionnée
+            if (lang === 'fr') {
+                document.querySelector('.lang-fr').classList.add('active');
+            } else if (lang === 'en') {
+                document.querySelector('.lang-en').classList.add('active');
+            }
+        }
+    </script>
 
 </body>
 </html>
